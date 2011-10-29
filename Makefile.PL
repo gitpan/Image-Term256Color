@@ -7,7 +7,8 @@ WriteMakefile
   'INSTALLDIRS' => 'site',
   'NAME' => 'Image::Term256Color',
   'EXE_FILES' => [
-                   'bin/img2term'
+                   'bin/img2term',
+                   'bin/nyan'
                  ],
   'VERSION_FROM' => 'lib/Image/Term256Color.pm',
   'PREREQ_PM' => {
