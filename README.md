@@ -22,7 +22,7 @@ https://metacpan.org/module/Term::ExtendedColor) ):
     vte                yes
     xterm              yes
     iTerm2             yes
-    Terminal.app        no
+    Terminal.app       yes (Lion only)
 
     GNU Screen         yes
     tmux               yes
@@ -43,10 +43,6 @@ To install libgd2 on Mac OS X:
 To install this module from cpan:
 
     cpan -i Image::Term256Color
-
-or
-
-    cpanm Image::Term256Color
 
 CPAN may require `--force` since the GD modules tests include actual display
 tests which will often fail.
@@ -71,6 +67,11 @@ representing the entire image.
 
 Scale 'myimage.jpg' by 50% before converting.
 
+    print Image::Term256Color::convert( 'myimage.jpg' , { utf8 => 1 } ) . "\n";
+
+Use utf8 output mode.
+
+
     my @img_rows = Image::Term256Color::convert( 'myimage.jpg' );
 
 Array context gives an array of strings.  Each string representing a row
@@ -86,6 +87,14 @@ Results in something like:
 
 ![Termcat](http://i.imgur.com/uF2f8.png)
 
+Also, the same image using utf8 mode:
+
+    curl http://octodex.github.com/images/original.jpg | img2term -u -x=80
+
+Results in something like:
+
+![Termcatutf8](http://i.imgur.com/hiVHR.png)
+
 Using the included nyan script:
 
     nyan -r 5 -n
@@ -93,6 +102,10 @@ Using the included nyan script:
 Results in something like:
 
 ![Nyancat](http://i.imgur.com/XRyIU.gif)
+
+If you just want to have an animated terminal Nyancat, I've ported the 
+animation script [in this gist](https://gist.github.com/1417991) to be
+a standalone script.
 
 ## SUPPORT AND DOCUMENTATION
 
